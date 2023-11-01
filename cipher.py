@@ -20,4 +20,8 @@ plain_text = input("Please enter a sentence: ")
 shift = 5
 encrypted_text = caesar_cipher(plain_text, shift)
 
+expected_value = "The encrypted sentence is: l bnymjsi xjsyjshj qjyyjwx."
+assert encrypted_text == expected_value
+
 print("The encrypted sentence is:", encrypted_text)
+
