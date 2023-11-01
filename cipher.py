@@ -1,20 +1,26 @@
 # add your code here
 
 def caesar_cipher(text, shift):
-    result = ""
+    encrypted_text = ""
     for char in text:
         if char.isalpha():
-            if char.islower():
-                result += chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))
+            is_upper = char.isupper()
+            char_offset = ord('A' if is_upper else 'a')
+            encrypted_char = chr(((ord(char) - char_offset + shift) % 26) + char_offset)
+            if is_upper:
+                encrypted_text += encrypted_char.upper()
             else:
-                result += chr(((ord(char) - ord('A') + shift) % 26) + ord('A'))
+                encrypted_text += encrypted_char
         else:
-            result += char
-    return result
+            encrypted_text += char
+    return encrypted_text
 
-text = "A sentence with Capital letters."
-shift = 5  # You can change the shift value according to your needs
+try:
+    plain_text = input("Please enter a sentence: ")
+    shift = 5
+    encrypted_text = caesar_cipher(plain_text, shift)
 
-ciphered_text = caesar_cipher(text, shift)
-print("Ciphered text:", ciphered_text)
+    print("The encrypted sentence is:", encrypted_text)
+except AssertionError as e:
+    print("An assertion error occurred:", e)
 
