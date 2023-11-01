@@ -10,7 +10,7 @@ def caesar_cipher(text, shift):
             if is_upper:
                 encrypted_text += encrypted_char.upper()
             else:
-                encrypted_text += encrypted_char
+                encrypted_text += encrypted_char.lower()  # Convert to lowercase
         else:
             encrypted_text += char
     return encrypted_text
