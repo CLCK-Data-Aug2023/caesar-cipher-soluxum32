@@ -1,10 +1,12 @@
 # add your code here
+
 def caesar_cipher(text, shift):
     encrypted_text = ""
     for char in text:
         if char.isalpha():
             is_upper = char.isupper()
             char_offset = ord('A' if is_upper else 'a')
+            char = char.lower()  # Convert the character to lowercase for comparison
             encrypted_char = chr(((ord(char) - char_offset + shift) % 26) + char_offset)
             if is_upper:
                 encrypted_text += encrypted_char.upper()
@@ -19,4 +21,3 @@ shift = 5
 encrypted_text = caesar_cipher(plain_text, shift)
 
 print("The encrypted sentence is:", encrypted_text)
-
