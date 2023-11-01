@@ -1,24 +1,25 @@
 # add your code here
-def caesar_cipher(text, shift):
-    encrypted_text = ""
-    for char in text:
-        if char.isalpha():  # Check if the character is an alphabet letter
-            is_upper = char.isupper()  # Check if the character is uppercase
-            char = char.lower()  # Convert to lowercase for easy shifting
-            shifted = chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))
-            if is_upper:
-                shifted = shifted.upper()  # Restore the case if it was uppercase
-            encrypted_text += shifted
+def encrypt_text(plaintext,n):
+    ans = ""
+    # iterate over the given text
+    for i in range(len(plaintext)):
+        ch = plaintext[i]
+        
+        # check if space is there then simply add space
+        if ch==" ":
+            ans+=" "
+        # check if a character is uppercase then encrypt it accordingly 
+        elif (ch.isupper()):
+            ans += chr((ord(ch) + n-65) % 26 + 65)
+        # check if a character is lowercase then encrypt it accordingly
+        
         else:
-            encrypted_text += char  # Special characters remain unchanged
-    return encrypted_text
+            ans += chr((ord(ch) + n-97) % 26 + 97)
+    
+    return ans
 
-def main():
-    plain_text = input("Enter a sentence to encrypt: ")
-    shift = 5  # Right shift by 5 positions
-
-    encrypted_text = caesar_cipher(plain_text, shift)
-    print("Encrypted text: " + encrypted_text)
-
-if __name__ == "__main":
-    main()
+plaintext = "BEER"
+n = 1
+print("Plain Text is : " + plaintext)
+print("Shift pattern is : " + str(n))
+print("Cipher Text is : " + encrypt_text(plaintext,n))
