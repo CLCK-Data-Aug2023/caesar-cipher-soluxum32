@@ -5,13 +5,10 @@ def caesar_cipher(text, shift):
         if char.isalpha():
             is_upper = char.isupper()
             char_offset = ord('A' if is_upper else 'a')
-            encrypted_char = chr((ord(char) - char_offset + shift) % 26 + char_offset)
-            if is_upper:
-                encrypted_text += encrypted_char.upper()
-            else:
-                encrypted_text += encrypted_char
+            encrypted_char = chr(((ord(char) - char_offset + shift) % 26) + char_offset)
         else:
-            encrypted_text += char
+            encrypted_char = char
+        encrypted_text += encrypted_char
     return encrypted_text
 
 plain_text = input("Please enter a sentence: ")
