@@ -1,25 +1,21 @@
 # add your code here
-def encrypt_text(plaintext,n):
-    ans = ""
-    # iterate over the given text
-    for i in range(len(plaintext)):
-        ch = plaintext[i]
-        
-        # check if space is there then simply add space
-        if ch==" ":
-            ans+=" "
-        # check if a character is uppercase then encrypt it accordingly 
-        elif (ch.isupper()):
-            ans += chr((ord(ch) + n-65) % 26 + 65)
-        # check if a character is lowercase then encrypt it accordingly
-        
-        else:
-            ans += chr((ord(ch) + n-97) % 26 + 97)
-    
-    return ans
+def encrypt(text,s):
+result = ""
+   # transverse the plain text
+   for i in range(len(text)):
+      char = text[i]
+      # Encrypt uppercase characters in plain text
+      
+      if (char.isupper()):
+         result += chr((ord(char) + s-65) % 26 + 65)
+      # Encrypt lowercase characters in plain text
+      else:
+         result += chr((ord(char) + s - 97) % 26 + 97)
+      return result
+#check the above function
+text = "Testing"
+s = 4
 
-plaintext = "BEER"
-n = 1
-print("Plain Text is : " + plaintext)
-print("Shift pattern is : " + str(n))
-print("Cipher Text is : " + encrypt_text(plaintext,n))
+print "Plain Text : " + text
+print "Shift pattern : " + str(s)
+print "Cipher: " + encrypt(text,s)
