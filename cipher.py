@@ -21,3 +21,10 @@ shift = 5
 encrypted_text = caesar_cipher(plain_text, shift)
 
 print("The encrypted sentence is:", encrypted_text)
+
+# Add case-insensitive comparison
+expected_output = 'The encrypted sentence is: F xjsyjshj bnym Hfunyfq qjyyjwx.'.lower()
+if encrypted_text.lower() == expected_output:
+    print("Success! The encrypted text matches the expected output.")
+else:
+    print("Error! The encrypted text does not match the expected output.")
