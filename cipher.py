@@ -1,15 +1,19 @@
 # add your code here
-import string
+def caesar_cipher(text, shift):
+    encrypted_text = ""
+    for char in text:
+        if char.isalpha():
+            shift_amount = shift % 26
+            if char.islower():
+                encrypted_char = chr(((ord(char) - ord('a') + shift_amount) % 26) + ord('a'))
+            else:
+                encrypted_char = chr(((ord(char) - ord('A') + shift_amount) % 26) + ord('A'))
+        else:
+            encrypted_char = char
+        encrypted_text += encrypted_char
+    return encrypted_text
 
-def caesar(text, shift, alphabets):
-    def shift_alphabet(alphabet):
-        return alphabet[shift:] + alphabet[:shift]
+plain_text = input("Please enter a sentence: ")
+encrypted_text = caesar_cipher(plain_text, 5)
+print("The encrypted sentence is:", encrypted_text)
 
-shifted_alphabets = tuple(map(shift_alphabet, alphabets))
-final_alphabet = ' '.join(alphabets)
-final_shifted_alphabet = ''.join(shifted_alphabets)
-table = srt.maketrans(final_alphabet, final_shifted_alphabet)
-return text.translate(table)
-
-plain_text = "Crazy!"
-print(caesar(plain_text, 5, [string.ascii_lowercase, string.ascii_uppercase, string.punctuation]))
